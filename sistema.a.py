@@ -96,4 +96,22 @@ def mostrar_relatorio():
     melhor_nome = ''
     melhor_media = -1
     for id_aluno, nome, nota1, nota2 in alunos:
-        media = 
+        media = ultilidades.calcular_media(nota1, nota2)
+        soma_medias += 1 
+
+        situacao = ultilidades.situacao(media)
+        if situacao == 'Aprovado':
+            aprovados += 1
+        elif situacao == 'Recuperacao':
+            recuperacao += 1
+        else:
+            reprovados += 1
+
+        if media > melhor_media: 
+            melhor_media = media
+            melhor_nome = nome
+
+        print(f'total de aluno: {len(alunos)}')
+        print(f'media da turma: {soma_medias /len(alunos):.2f}')
+        print(f'Aprovados: {aprovados} ')
+        print(f'Em recuperção: {recuperacao}')

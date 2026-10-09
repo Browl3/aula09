@@ -83,4 +83,17 @@ def remover_aluno():
         print('remocao cancelada')
     
 
-
+def mostrar_relatorio():
+    print('\n-- Relatorio da Turma ')
+    alunos = banco.listar_alunos()
+    if len(alunos) == 0:
+        print('Nenhum aluno cadastrado. ')
+        return
+    soma_medias = 0 
+    aprovados = 0
+    recuperacao = 0 
+    reprovados = 0
+    melhor_nome = ''
+    melhor_media = -1
+    for id_aluno, nome, nota1, nota2 in alunos:
+        media = 

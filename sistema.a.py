@@ -115,3 +115,5 @@ def mostrar_relatorio():
         print(f'media da turma: {soma_medias /len(alunos):.2f}')
         print(f'Aprovados: {aprovados} ')
         print(f'Em recuperção: {recuperacao}')
+        print(f'Reprovados: {reprovados}')
+        print(f'Melhor media {melhor_nome} {melhor_media:.1f}')

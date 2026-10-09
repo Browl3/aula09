@@ -25,3 +25,62 @@ def mostrar_aluno(aluno):
           f'N1: {nota1:>4.1f} N2: {nota1:>4.1f} '
           f'Media: {media:>4.1f} {situacao}')
     
+def cadastrar_aluno():
+    print('\n--- Cadastrar aluno ---')
+    nome = ultilidades.ler_texto('Nome: ')
+    nota1 = ultilidades.ler_nota('Nota 1 (0 a 10): ')
+    nota2 = ultilidades.ler_nota('Nota 2 (0 a 10): ')    
+    banco.inserir_aluno(nome, nota1, nota2)
+    print('Aluno cadastrado com sucesso! ')
+
+
+def listar_alunos():
+    print('\n--- Listar alunos ---')
+    alunos = banco.listar_alunos()
+    if len(alunos) == 0: 
+        print('nehum aluno encontrado.')
+        return
+    for aluno in alunos:
+        mostrar_aluno()
+
+
+def buscar_aluno():
+    print('\n --- Buscar aluno ---')
+    texto = ultilidades.ler_texto('Digite parte do nome: ')
+    alunos = banco.buscar_por_nome(texto)
+    if len(alunos) == 0: 
+        print('nenhum aluno encontrado. ')
+        return
+    for aluno in alunos:
+        mostrar_aluno()
+
+def atualizar_notas():
+    print('\n --- Atualizar Notas ---')
+    id_aluno = ultilidades.ler_inteiro('Digite o ID do aluno : ')
+    aluno = banco.buscar_por_id(id_aluno)
+    if aluno is None: 
+        print('Aluno nao encontrado')
+        return
+    mostrar_aluno()
+    nota1 = ultilidades.ler_nota("Nova nota 1: ")
+    nota2 = ultilidades.ler_nota("Nova nota 2: ")
+    banco.atualizar_notas(id_aluno, nota1, nota2)
+    print("notas atualizadas!")
+
+def remover_aluno():
+    print('\n --- Remover aluno  ---')
+    id_aluno = ultilidades.ler_inteiro('Digite o ID do aluno : ')
+    aluno = banco.buscar_por_id(id_aluno)
+    if aluno is None: 
+        print('Aluno não encontrado. ')
+        return
+    mostrar_aluno()
+    confirma = input('Tem certeza que deseja remover (s/n): ').lower()
+    if confirma == 's': 
+        banco.remover_aluno(id_aluno)
+        print("Aluno removido ")
+    else:
+        print('remocao cancelada')
+    
+
+

@@ -21,12 +21,11 @@ def criar_tabela():
 
     conn = conectar()
     conn.execute('''
-        CREATE TABLE IF NOT EXISTS alunos (
-            id INTEGER PRIMRAY KEY AUTOINCREMENT,
+            CREATE TABLE IF NOT EXISTS alunos (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
             nome TEXT NOT NULL, 
             nota1 REAL NOT NULL,
-            nota2 REAL NOT NULL, 
-        )
+            nota2 REAL NOT NULL)
     ''')
     conn.commit()
     conn.close()

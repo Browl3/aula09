@@ -69,3 +69,21 @@ def buscar_por_id(id_aluno):
     ).fetchone
     conn.close()
     return aluno
+
+
+def atualizar_notas(id_aluno, nota1, nota2):
+    conn = conectar()
+    conn.execute(
+        'UPDATE alunos SET nota1 = ?, nota2 = ? where id = ?'
+    )
+    conn.commit()
+    conn.close()
+
+def remover_aluno(id_aluno):
+    conn = conectar()
+    conn.execute(
+        'DELETE FROM alunos WHERE id = ?', (id_aluno,)
+    )
+    conn.commit()
+    conn.close()
+

@@ -43,7 +43,7 @@ def inserir_alunos():
 
 def listar_alunos():
     conn = conectar()
-    linhas = conn.execute('ELECT id, nome, nota1, nota2, FROM alunos ORDER BY nome').fetchall()
+    linhas = conn.execute('SELECT id, nome, nota1, nota2 FROM alunos ORDER BY nome').fetchall()
 
     conn.close()
     return linhas

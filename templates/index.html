@@ -1,0 +1,23 @@
+{# index html - pagina inicial busca + tabela de alunos #}
+{% base 'base.html' %}
+
+{% block conteudo %}
+
+<h2>Alunos </h2>
+
+{# formulario de busca com method="get": o texto vai na url (? busca=ana).#}
+
+
+<form action="" method="get" class="busca">
+WWW
+    <input type=" text" name="busca" value="{{ request.args.get('busca', '') }}" placeholder="Busca por nome">
+    <button type="submit">Buscar</button>
+    {#so mostra o link de limpar se houver busca#}
+    {% if busca %}
+        <a href="{{ url_for('inicio') }}">Limpar</a>
+    {% endif %}
+
+    
+
+
+</form>
